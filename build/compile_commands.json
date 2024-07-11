@@ -1,7 +1,7 @@
 [
 {
   "directory": "E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/build",
-  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -g -o CMakeFiles\\MyNeuralNetwork.dir\\main.cpp.obj -c E:\\docs\\OneDrive\\hobbies\\Proyectos\\myNeuralNetwork\\myNeuralNetwork\\main.cpp",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IE:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/libs/glfw64/include/GLFW -g -o CMakeFiles\\MyNeuralNetwork.dir\\main.cpp.obj -c E:\\docs\\OneDrive\\hobbies\\Proyectos\\myNeuralNetwork\\myNeuralNetwork\\main.cpp",
   "file": "E:\\docs\\OneDrive\\hobbies\\Proyectos\\myNeuralNetwork\\myNeuralNetwork\\main.cpp",
   "output": "CMakeFiles\\MyNeuralNetwork.dir\\main.cpp.obj"
 }

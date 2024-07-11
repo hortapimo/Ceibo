@@ -1,5 +1,13 @@
 # ninja log v6
-18	426	7423566864473082	CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj	ad379580a91b6986
+16	1690	7424150156706636	CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj	71bbbfa7bdc364aa
 436	573	7423536561952597	MyNeuralNetwork.exe	597fd5eaf2dc4b9a
-428	568	7423566868554791	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe	96279b65f466e080
+1691	2010	7424150173513714	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe	17424335ee28ec96
 442	601	7423566616961890	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Release/MyNeuralNetwork.exe	dd90a8532d6a78c0
+8	533	7424152083010784	CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj	71bbbfa7bdc364aa
+535	688	7424152088281250	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe	17424335ee28ec96
+28	628	7424152213077419	CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj	71bbbfa7bdc364aa
+630	813	7424152219062988	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe	17424335ee28ec96
+27	505	7424152638203741	CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj	71bbbfa7bdc364aa
+507	741	7424152642968300	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe	17424335ee28ec96
+7	448	7424154607057596	CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj	71bbbfa7bdc364aa
+450	663	7424154611419822	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe	17424335ee28ec96

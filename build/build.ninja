@@ -52,6 +52,7 @@ build cmake_object_order_depends_target_MyNeuralNetwork: phony || .
 build CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj: CXX_COMPILER__MyNeuralNetwork_unscanned_Debug E$:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/main.cpp || cmake_object_order_depends_target_MyNeuralNetwork
   DEP_FILE = CMakeFiles\MyNeuralNetwork.dir\main.cpp.obj.d
   FLAGS = -g
+  INCLUDES = -IE:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/libs/glfw64/include/GLFW
   OBJECT_DIR = CMakeFiles\MyNeuralNetwork.dir
   OBJECT_FILE_DIR = CMakeFiles\MyNeuralNetwork.dir
 
@@ -63,9 +64,9 @@ build CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj: CXX_COMPILER__MyNeuralNetwork
 #############################################
 # Link the executable E:\docs\OneDrive\hobbies\Proyectos\myNeuralNetwork\myNeuralNetwork\bin\Windows\Debug\MyNeuralNetwork.exe
 
-build E$:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe: CXX_EXECUTABLE_LINKER__MyNeuralNetwork_Debug CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj
+build E$:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/bin/Windows/Debug/MyNeuralNetwork.exe: CXX_EXECUTABLE_LINKER__MyNeuralNetwork_Debug CMakeFiles/MyNeuralNetwork.dir/main.cpp.obj | E$:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/libs/glfw64/lib-mingw-w64/libglfw3.a
   FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/libs/glfw64/lib-mingw-w64/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\MyNeuralNetwork.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
