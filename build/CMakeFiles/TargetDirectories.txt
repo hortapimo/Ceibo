@@ -1,3 +1,0 @@
-E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/build/CMakeFiles/MyNeuralNetwork.dir
-E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/build/CMakeFiles/edit_cache.dir
-E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/build/CMakeFiles/rebuild_cache.dir
