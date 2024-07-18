@@ -1,27 +1,13 @@
-#include <iostream>
-#include <glfw3.h>
+#include "model.hpp"
+#include "view.hpp"
+#include "controller.hpp"
 
 int main() {
-    std::cout << "hola pa\n";
+    Model model;
+    View view;
+    Controller controller(model, view);
 
-     if (!glfwInit()) {
-        std::cout << "Error al inicializar GLFW" << std::endl;
-        return -1;
-    }
+    controller.run();
 
-    // Configura la ventana GLFW aquí
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Mi Ventana GLFW", NULL, NULL);
-
-    while (!glfwWindowShouldClose(window)) {
-    // Lógica de la aplicación
-    // ...
-
-    glfwSwapBuffers(window); // Intercambia los buffers de la ventana
-    glfwPollEvents(); // Maneja eventos
-}
-
-    glfwTerminate();
     return 0;
 }
