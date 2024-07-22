@@ -1,7 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include <GLFW/glfw3.h>
 #include <vector>
 
 class View {
