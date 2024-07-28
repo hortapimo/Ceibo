@@ -5,8 +5,8 @@ set (CMAKE_CXX_STANDARD 17)
 set(DirectorioOutPut "${CMAKE_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME}/${CMAKE_BUILD_TYPE}") #variable para facilitar los siguientes paths
 
 include_directories(${CMAKE_SOURCE_DIR}/dependencies/glfw64/include/) #agrego el path donde va a estar el archivo de la biblioteca
-include_directories(${CMAKE_SOURCE_DIR}/dependencies/glew/include/) #agrego el path donde va a estar el archivo de la biblioteca
-
+include_directories(${CMAKE_SOURCE_DIR}/dependencies/glew/include/)
+include_directories(${CMAKE_SOURCE_DIR}/dependencies/SFML/include/)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${DirectorioOutPut}") #path donde va a estar el executable de mi programa!
 
