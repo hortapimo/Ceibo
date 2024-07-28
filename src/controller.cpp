@@ -2,17 +2,20 @@
 
 Controller::Controller(Model& model, View& view) : model(model), view(view) {}
 
-void Controller::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
-
-}
-
-void Controller::cursor_pos_callback(GLFWwindow* window, double xpos, double ypos) {
-    // Guarda las coordenadas del mouse
-    
-    savedXPos =xpos;
-    savedYPos = ypos;
-}
-
 void Controller::run() {
+    sf::Window window(sf::VideoMode(800, 600), "My window");
+
+    // run the program as long as the window is open
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+    }
 
 }
