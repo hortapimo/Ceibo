@@ -13,7 +13,10 @@
 
 class Controller {
 public:
-    Controller(Model& model, View& view);
+    Controller(Model& model, View& view, sf::Event& event);
+    
+    void init();
+    void processEvent();
     void run();
     static inline float savedXPos = 0.0;
     static inline float savedYPos = 0.0;
@@ -21,6 +24,7 @@ public:
 private:
     Model& model;
     View& view;
+    sf::Event& event;
 };
 
 

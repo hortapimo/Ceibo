@@ -1,6 +1,16 @@
 #include "controller.hpp"
 
-Controller::Controller(Model& model, View& view) : model(model), view(view) {}
+Controller::Controller(Model& model, View& view, sf::Event& event) : model(model), view(view), event(event) {}
+
+void Controller::init(){
+    view.init();
+}
+
+void Controller::processEvent(){
+
+    view.render();
+}
+
 
 void Controller::run() {
 
