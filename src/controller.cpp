@@ -11,6 +11,10 @@ void Controller::processEvent(){
     view.render();
 }
 
+void Controller::test(){
+    view.crearCirculo(10.0f);
+    view.render();
+}
 
 void Controller::run() {
 

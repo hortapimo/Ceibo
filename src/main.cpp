@@ -3,6 +3,7 @@
 #include "controller.hpp"
 
 
+
 int main() {
 
     sf::RenderWindow window(sf::VideoMode(200, 200), "Ceibo");
@@ -16,13 +17,15 @@ int main() {
 
     while (window.isOpen())
     {
+        
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
 
-        controller.processEvent();
+        //controller.processEvent();
+        controller.test();
 
     }
 

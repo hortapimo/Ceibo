@@ -18,6 +18,8 @@ public:
     void init();
     void processEvent();
     void run();
+    void test();
+    
     static inline float savedXPos = 0.0;
     static inline float savedYPos = 0.0;
 
