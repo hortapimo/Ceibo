@@ -3,7 +3,6 @@
 #include "controller.hpp"
 
 
-
 int main() {
 
     sf::RenderWindow window(sf::VideoMode(200, 200), "Ceibo");
