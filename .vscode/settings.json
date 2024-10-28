@@ -74,7 +74,20 @@
         "fstream": "cpp",
         "iomanip": "cpp",
         "sstream": "cpp",
-        "*.rh": "cpp"
+        "*.rh": "cpp",
+        "chrono": "cpp",
+        "filesystem": "cpp",
+        "charconv": "cpp",
+        "format": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "mutex": "cpp",
+        "queue": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "xhash": "cpp"
     },
     "cmake.options.statusBarVisibility": "compact"
 }

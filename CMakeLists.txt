@@ -12,12 +12,7 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 add_definitions(-DSFML_STATIC)
 
-set(SOURCES
-    src/main.cpp
-    src/model.cpp
-    src/view.cpp
-    src/controller.cpp
-)
+file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 add_executable(Ceibo ${SOURCES}) #Crea el ejecutable del programa
 

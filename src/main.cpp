@@ -1,19 +1,22 @@
-#include "model.hpp"
-#include "view.hpp"
-#include "controller.hpp"
-
+#include "Model.hpp"
+#include "View.hpp"
+#include "Controller.hpp"
 
 int main() {
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Ceibo");
+//window and event creation
+    sf::RenderWindow window(sf::VideoMode(200,200), "Ceibo");
     sf::Event event;
 
+//Model-View-Controler architecture
     Model model;
     View view(window);
     Controller controller(model, view, event);
 
+//init things
     controller.init();
 
+//Main loop
     while (window.isOpen())
     {
         
@@ -24,11 +27,9 @@ int main() {
         }
 
         //controller.processEvent();
-        controller.test();
+        //controller.test();
 
     }
-
-
 
     return 0;
 }

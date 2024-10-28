@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/CMakeFiles/Ceibo.dir/embed.manifest"

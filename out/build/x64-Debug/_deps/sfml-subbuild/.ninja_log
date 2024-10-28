@@ -1,0 +1,21 @@
+# ninja log v5
+2	91	7512205968797872	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	ea9b931ab8e9088e
+2	91	7512205968797872	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir	ea9b931ab8e9088e
+91	10921	7512206077109872	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	24b6e74db87c28f7
+91	10921	7512206077109872	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download	24b6e74db87c28f7
+10922	12778	0	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	52545d5ab631fe86
+10922	12778	0	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update	52545d5ab631fe86
+12779	12861	7512206096521346	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	acbd946483c5bb66
+12779	12861	7512206096521346	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch	acbd946483c5bb66
+12861	12938	7512206097291301	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	f2555e5c714b7739
+12861	12938	7512206097291301	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure	f2555e5c714b7739
+12938	13016	7512206098081282	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	f2dc5f6232dd2ef
+12938	13016	7512206098081282	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build	f2dc5f6232dd2ef
+13016	13093	7512206098846432	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	f7eeb9320f037e96
+13016	13093	7512206098846432	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install	f7eeb9320f037e96
+13093	13166	7512206099576437	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	bf37cc445969e7e0
+13093	13166	7512206099576437	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test	bf37cc445969e7e0
+13166	13266	7512206100576444	CMakeFiles/sfml-populate-complete	5f72530467122871
+13166	13266	7512206100576444	sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	5f72530467122871
+13166	13266	7512206100576444	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/CMakeFiles/sfml-populate-complete	5f72530467122871
+13166	13266	7512206100576444	E:/docs/OneDrive/hobbies/Proyectos/myNeuralNetwork/myNeuralNetwork/out/build/x64-Debug/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-done	5f72530467122871
