@@ -8,6 +8,8 @@
 #include "Node.hpp"
 #include "Graph.hpp"
 
+int Node::nextId = 1;
+
 class Model {
 
 private:
@@ -16,13 +18,14 @@ private:
 public:
     Model();
     
-    std::vector<std::string> listFolderAndFiles(const std::string& directory_path);
     std::vector<std::string> Model::listFolderAndFilesOfFolder(const std::string& directory_path);
+    std::vector<Node> getNodesOfFolder(std::string filePath,  Node fatherNode);
+    std::vector<Node> getNodesOfRootFolder(std::filesystem::path filePath);
 
 
-    std::vector<int> Model::getRowForAdjacencyMatrix(std::vector<std::string> listFoldersAndFiles);
+    std::vector<int> Model::getRowForAdjacencyMatrix(std::vector<std::string> listFoldersAndFiles); // no imp
 
-    std::vector<Node> getNodesOfFolder(std::string filePath);
+   
     void Model::printNodes(std::vector<Node> & nodos);
     Graph getGraph(const std::string directory_path); 
 
