@@ -2,7 +2,10 @@
 #include <fstream>
 #include "Node.hpp"
 
-using vec_Nodos = std::vector<Node>;
+
+using vec_prtNodos = std::vector<std::unique_ptr<Node>>;
+using Matrix = std::vector<std::vector<int>>;
+
 
 Model::Model() {
 
@@ -25,30 +28,30 @@ std::vector<std::string> Model::listFolderAndFilesOfFolder(const std::string& di
     return filesFolderNames;
 }
 
-std::vector<int> Model::getRowForAdjacencyMatrix(std::vector<std::string> listFoldersAndFiles){
+// std::vector<int> Model::getRowForAdjacencyMatrix(std::vector<std::string> listFoldersAndFiles){
 
-}
+// }
 
-vec_Nodos Model::getNodesOfFolder(std::string filePath, Node fatherNode){
+vec_prtNodos Model::getNodesOfFolder(std::string filePath, Node fatherNode){
     
     std::vector<std::string> stringNodesList = listFolderAndFilesOfFolder(filePath);
-    vec_Nodos nodos(stringNodesList.size());
+    vec_prtNodos nodos;
+    nodos.reserve(stringNodesList.size());
 
-    int i = 0;
+
     for (std::string fileFolderName : stringNodesList){
         
-        Node nodo(fileFolderName);
-        nodo.addEdge(nodo,fatherNode);
-        nodos[i]=nodo;
-        i++;
+        std::unique_ptr<Node> prtNode = std::make_unique<Node>(fileFolderName);
+        prtNode->addEdge(*prtNode,fatherNode);
+        nodos.push_back(std::move(prtNode));
     }
 
     return nodos;
 }
 
-vec_Nodos Model::getNodesOfRootFolder(std::filesystem::path filePath){
+vec_prtNodos Model::getNodesOfRootFolder(std::filesystem::path filePath){
     Node rootNode(filePath.filename().string());
-    vec_Nodos nodos  = getNodesOfFolder(filePath.string(), rootNode);
+    vec_prtNodos nodos  = getNodesOfFolder(filePath.string(), rootNode);
 
 
     if (std::filesystem::exists(filePath) && std::filesystem::is_directory(filePath)) {
@@ -56,7 +59,8 @@ vec_Nodos Model::getNodesOfRootFolder(std::filesystem::path filePath){
         for (const auto& entry : std::filesystem::directory_iterator(filePath)) {
 
            if(entry.is_directory()){
-            concatenateVector(nodos, getNodesOfRootFolder(entry.path().string()));
+            vec_prtNodos aux = getNodesOfRootFolder(entry.path());
+            nodos.insert(nodos.end(), std::make_move_iterator(aux.begin()), std::make_move_iterator(aux.end())); //concateno el vector de nodos "padre" con los demas nodos "hijos"
            }
 
         }
@@ -68,24 +72,58 @@ vec_Nodos Model::getNodesOfRootFolder(std::filesystem::path filePath){
     return nodos;
 }
 
-
-
-void Model::printNodes(vec_Nodos & nodos){
-    for(Node nodo: nodos){
-        std::cout << nodo.name << std::endl;
+void Model::printNodes(vec_prtNodos & nodos){
+    for(auto & ptrNodo: nodos){
+        std::cout << "nodo:" << ptrNodo->name << " - id:" << ptrNodo->getID() << std::endl;
     }
+}
+
+std::vector<int> Model::getRowForAdyacencyMatrix(Node Node, size_t nCols, map_IdRows mapIdRows)
+{
+
+    std::vector<int> row(nCols);
+
+    for (Edge edg : Node.edges){
+        std::cout <<  mapIdRows[edg.parID[1]] <<"\n";
+        size_t oneInColumn = mapIdRows[edg.parID[1]];
+        row[oneInColumn]=1;
+    }
+
+    return row;
+}
+
+map_IdRows Model::getMapIdRows(const vec_prtNodos & ptrsNodes){
+    map_IdRows mapIdNodes;
+
+    for (size_t i=0; i< ptrsNodes.size(); i++){
+        //agregar un atributo de fila en los nodos?
+        size_t id = ptrsNodes[i]->getID();
+        mapIdNodes[id] = i;
+    }
+
+    return mapIdNodes;
+}
+
+Matrix Model::buildAdyacencyMatrix(const vec_prtNodos & ptrsNodes){
+
+    size_t nColumns = ptrsNodes.size();
+    map_IdRows mapIdNodes = getMapIdRows(ptrsNodes);
+
+    Matrix adyacencyMatrix; 
+    for (const auto& ptrNode: ptrsNodes){ 
+        adyacencyMatrix.emplace_back(getRowForAdyacencyMatrix(*ptrNode , nColumns, map_IdRows));
+    }
+
+    return adyacencyMatrix;
 }
 
 Graph Model::getGraph(const std::string directory_path){
     Graph graph;
-
-
-    //graph.add_nodes(getNodesOfFolder(directory_path, ));
     
+    vec_prtNodos nodes = getNodesOfRootFolder(directory_path);
+    Matrix adyancecyMatrix = buildAdyacencyMatrix(nodes);
+    //graph.add_nodes(getNodesOfFolder(directory_path));
+    //graph.addAdyancecyMatrix(adyancecyMatrix)
 
     return graph;
-}
-
-static void concatenateVector(vec_Nodos & vec1, const vec_Nodos & vec2 ){
-    vec1.insert(vec1.begin(),vec2.begin(), vec2.end());
 }

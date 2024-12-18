@@ -27,7 +27,7 @@ int main() {
         }
 
         //controller.processEvent();
-        //controller.test();
+        controller.test();
 
     }
 

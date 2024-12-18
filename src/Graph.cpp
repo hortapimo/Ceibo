@@ -2,8 +2,6 @@
 
 #include "Graph.hpp"
 
-int Node::nextId = 1; //incializo la variale estatica de nodo.
-
 Graph::Graph()
 {
 }

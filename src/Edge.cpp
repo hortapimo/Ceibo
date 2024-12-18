@@ -1,8 +1,8 @@
 #include "Edge.hpp"
 
-Edge::Edge(Node node1, Node node2){
+Edge::Edge(int node1ID, int node2ID){
 
-    parID[0] =node1.getID();
-    parID[1] =node2.getID();
+    parID[0] =node1ID;
+    parID[1] =node2ID;
 
 }

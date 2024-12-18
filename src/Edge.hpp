@@ -1,11 +1,10 @@
 #pragma once
-#include"Node.hpp"
 
 class Edge
 {
 private:
-    int parID[2];
 
 public:
-    Edge(Node node1, Node node2);
+    size_t parID[2];
+    Edge(int node1ID, int node2ID);
 };
