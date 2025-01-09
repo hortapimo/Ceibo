@@ -32,25 +32,40 @@ std::vector<std::string> Model::listFolderAndFilesOfFolder(const std::string& di
 
 // }
 
-vec_prtNodos Model::getNodesOfFolder(std::string filePath, Node fatherNode){
+vec_prtNodos Model::getNodesOfFolder(std::string filePath, Node & fatherNode){
     
     std::vector<std::string> stringNodesList = listFolderAndFilesOfFolder(filePath);
     vec_prtNodos nodos;
     nodos.reserve(stringNodesList.size());
 
-
     for (std::string fileFolderName : stringNodesList){
         
         std::unique_ptr<Node> prtNode = std::make_unique<Node>(fileFolderName);
         prtNode->addEdge(*prtNode,fatherNode);
-        nodos.push_back(std::move(prtNode));
+        nodos.emplace_back(std::move(prtNode));
     }
 
     return nodos;
 }
+size_t findNodeByName(std::string name, const vec_prtNodos & prtNodos)
+{
+    
+    size_t i = 0;
+    for (const auto & node: prtNodos){
+        if (node->getName() == name){
+            break;
+        }
+        else{
+            i ++;
+        }
+    }
 
-vec_prtNodos Model::getNodesOfRootFolder(std::filesystem::path filePath){
-    Node rootNode(filePath.filename().string());
+
+    return i;
+}
+
+
+vec_prtNodos Model::getNodesOfRootFolder(std::filesystem::path filePath, Node & rootNode){
     vec_prtNodos nodos  = getNodesOfFolder(filePath.string(), rootNode);
 
 
@@ -59,7 +74,9 @@ vec_prtNodos Model::getNodesOfRootFolder(std::filesystem::path filePath){
         for (const auto& entry : std::filesystem::directory_iterator(filePath)) {
 
            if(entry.is_directory()){
-            vec_prtNodos aux = getNodesOfRootFolder(entry.path());
+            std::string nodeName = entry.path().filename().string();
+            size_t i = findNodeByName(nodeName, nodos);
+            vec_prtNodos aux = getNodesOfRootFolder(entry.path(),*nodos[i]);
             nodos.insert(nodos.end(), std::make_move_iterator(aux.begin()), std::make_move_iterator(aux.end())); //concateno el vector de nodos "padre" con los demas nodos "hijos"
            }
 
@@ -78,14 +95,13 @@ void Model::printNodes(vec_prtNodos & nodos){
     }
 }
 
-std::vector<int> Model::getRowForAdyacencyMatrix(Node Node, size_t nCols, map_IdRows mapIdRows)
+std::vector<int> Model::getRowForAdyacencyMatrix(Node Node, size_t nCols)
 {
 
     std::vector<int> row(nCols);
 
     for (Edge edg : Node.edges){
-        std::cout <<  mapIdRows[edg.parID[1]] <<"\n";
-        size_t oneInColumn = mapIdRows[edg.parID[1]];
+        size_t oneInColumn = edg.parID[1];
         row[oneInColumn]=1;
     }
 
@@ -107,11 +123,11 @@ map_IdRows Model::getMapIdRows(const vec_prtNodos & ptrsNodes){
 Matrix Model::buildAdyacencyMatrix(const vec_prtNodos & ptrsNodes){
 
     size_t nColumns = ptrsNodes.size();
-    map_IdRows mapIdNodes = getMapIdRows(ptrsNodes);
 
     Matrix adyacencyMatrix; 
+
     for (const auto& ptrNode: ptrsNodes){ 
-        adyacencyMatrix.emplace_back(getRowForAdyacencyMatrix(*ptrNode , nColumns, map_IdRows));
+        adyacencyMatrix.emplace_back(getRowForAdyacencyMatrix(*ptrNode , nColumns));
     }
 
     return adyacencyMatrix;
@@ -119,11 +135,15 @@ Matrix Model::buildAdyacencyMatrix(const vec_prtNodos & ptrsNodes){
 
 Graph Model::getGraph(const std::string directory_path){
     Graph graph;
-    
-    vec_prtNodos nodes = getNodesOfRootFolder(directory_path);
+
+    //I get the node vector
+    std::unique_ptr<Node> ptrFatherNode = std::make_unique<Node>("Root");
+    vec_prtNodos nodes = getNodesOfRootFolder(directory_path, *ptrFatherNode);
+    nodes.insert(nodes.begin(), std::move(ptrFatherNode));
+
     Matrix adyancecyMatrix = buildAdyacencyMatrix(nodes);
-    //graph.add_nodes(getNodesOfFolder(directory_path));
-    //graph.addAdyancecyMatrix(adyancecyMatrix)
+    graph.add_nodes(nodes);
+    graph.add_adjacencyMatrix(adyancecyMatrix);
 
     return graph;
 }

@@ -15,13 +15,15 @@ private:
 
 public:
     std::string name;
-    std::vector<Edge> edges;   
+    std::vector<Edge> edges;
+    float position[2] = {0,0};   
 
     Node();
     Node(std::string name);
     void addEdge(Node node1, Node node2);
     
     int getID();
+    std::string getName();
 
 };
 

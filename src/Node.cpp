@@ -1,6 +1,6 @@
 #include "Node.hpp"
 
-int Node::nextId = 0; //va -1 ¿?
+int Node::nextId = 0;
 
 Node::Node() : id(nextId)
 {
@@ -23,3 +23,6 @@ int Node::getID(){
     return id;
 }
 
+std::string Node::getName(){
+    return name;
+}

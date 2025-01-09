@@ -4,16 +4,18 @@
 #include "Edge.hpp"
 
 using Matrix = std::vector<std::vector<int>>;
+using vec_prtNodos = std::vector<std::unique_ptr<Node>>;
 
 class Graph
 {
 private:
     /* data */
 public:
-    std::vector<Node> m_nodes;
-    std::vector<Edge> m_edges;
+    std::vector<std::unique_ptr<Node>> m_ptrNodes;
     Matrix m_adjacencyMatrix;
 
     Graph();
-    void add_nodes(std::vector<Node> nodes);
+    void add_nodes(vec_prtNodos & nodos);
+    void add_adjacencyMatrix(Matrix matrix);
+
 };

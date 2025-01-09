@@ -3,6 +3,7 @@
 #include <mutex>
 
 #include "Node.hpp"
+#include "Graph.hpp"
 
 using vec_prtNodos = std::vector<std::unique_ptr<Node>>;
 
@@ -26,11 +27,13 @@ void Controller::test(){
 
     if(!functionExecuted){
         // test getNodesOfFOlder
-        std::string pathFolder = "C:\\Users\\Hortapimo\\Desktop\\test";
-        Node nodoPadre("padre");
-        model.getGraph(pathFolder);
-        //model.printNodes(nodos);
         
+        //std::string pathFolder = "C:\\Users\\Hortapimo\\Desktop\\test";
+        std::string pathFolder = "E:\\docs\\OneDrive\\balseiro";
+        Graph aux = model.getGraph(pathFolder);
+        //model.printNodes(nodos);
+        view.loadGraph(aux);
+        //view.render();
         
         // view.init();
         // model.printNodes(nodos);

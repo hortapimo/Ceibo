@@ -22,12 +22,12 @@ public:
     Model();
     
     std::vector<std::string> listFolderAndFilesOfFolder(const std::string& directory_path);
-    vec_prtNodos getNodesOfFolder(std::string filePath,  Node fatherNode);
-    vec_prtNodos getNodesOfRootFolder(std::filesystem::path filePath);
+    vec_prtNodos getNodesOfFolder(std::string filePath,  Node& fatherNode);
+    vec_prtNodos Model::getNodesOfRootFolder(std::filesystem::path filePath, Node & rootNode);
 
     Matrix buildAdyacencyMatrix(const vec_prtNodos & prtNodos);
-    map_IdNodes getMapIdRows(const vec_prtNodos & ptrsNodes);
-    std::vector<int> getRowForAdyacencyMatrix(Node Node, size_t nCols, map_IdNodes mapaIdNodes); // no imp
+    map_IdRows getMapIdRows(const vec_prtNodos & ptrsNodes);
+    std::vector<int> getRowForAdyacencyMatrix(Node Node, size_t nCols); // no imp
 
    
     void printNodes(vec_prtNodos & nodos);

@@ -9,6 +9,8 @@
 #include <memory>
 #include <vector>
 
+#include "Graph.hpp"
+
 class View {
 public:
     sf::RenderWindow& window;
@@ -17,12 +19,13 @@ public:
     void render();
     void init();
     void crearCirculo(float radio);
-    int drawNode(float x, float y);
+    int loadNodeFigure(std::string nodeName,float x, float y);
+    void loadGraph(Graph & graph);
     
  
 
 private:
-    std::vector<sf::Drawable*> figueresQueue;
+    std::vector<std::unique_ptr<sf::Drawable>> m_ptrFigueresQueue;
     
 };
 

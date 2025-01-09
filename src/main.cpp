@@ -20,15 +20,17 @@ int main() {
     while (window.isOpen())
     {
         
+        //colect events, and close the windows if event is close
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            
+            controller.test();
         }
 
         //controller.processEvent();
-        controller.test();
-
+        
     }
 
     return 0;
