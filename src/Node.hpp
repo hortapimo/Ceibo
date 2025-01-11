@@ -14,6 +14,8 @@ private:
     int id; 
 
 public:
+    double dx = 0;
+    double dy = 0;
     std::string name;
     std::vector<Edge> edges;
     float position[2] = {0,0};   

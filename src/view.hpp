@@ -21,7 +21,7 @@ public:
     void crearCirculo(float radio);
     int loadNodeFigure(std::string nodeName,float x, float y);
     void loadGraph(Graph & graph);
-    
+    void giveLayout(Graph & graph);
  
 
 private:

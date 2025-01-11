@@ -15,7 +15,7 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 add_definitions(-DSFML_STATIC)
 
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE SOURCES "src/*.cpp" "src/utilitis/*.cpp")
 
 add_executable(Ceibo ${SOURCES}) #Crea el ejecutable del programa
 

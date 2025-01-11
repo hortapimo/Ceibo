@@ -1,6 +1,8 @@
 #include "View.hpp"
 #include <array>
 
+#include "utilitis/layout.hpp"
+
 View::View(sf::RenderWindow& window) : window(window){}
 
 void View::render() {
@@ -68,9 +70,31 @@ int View::loadNodeFigure(std::string nodeName,float x, float y){
     return 1;
 }
 
+void View::giveLayout(Graph & graph){
+    
+    sf::Vector2u screenSize = window.getSize();
+
+    int iterations = 1000;
+    double k = 100;
+    double timestep = 0.005;
+
+    layout::spring_layout(graph.m_ptrNodes, iterations,k,timestep, screenSize.x, screenSize.y);
+    
+    /*
+    float x = 30;
+    float y = 30;
+    for (size_t i = 0; i < graph.m_ptrNodes.size(); i++){
+        graph.m_ptrNodes[i]->position[0]= x;
+
+        graph.m_ptrNodes[i]->position[1]= y;
+        x=x+1;
+        y=y+1;
+    }*/
+}
+
 void View::loadGraph(Graph & graph){
-    float x = 10;
-    float y = 10;
+
+    giveLayout(graph);
     for (size_t i = 0; i < graph.m_ptrNodes.size(); i++){
 
         loadNodeFigure(graph.m_ptrNodes[i]->getName(),graph.m_ptrNodes[i]->position[0], graph.m_ptrNodes[i]->position[1]);

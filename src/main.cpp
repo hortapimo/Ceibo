@@ -5,7 +5,7 @@
 int main() {
 
 //window and event creation
-    sf::RenderWindow window(sf::VideoMode(200,200), "Ceibo");
+    sf::RenderWindow window(sf::VideoMode(1500,1000), "Ceibo");
     sf::Event event;
 
 //Model-View-Controler architecture
