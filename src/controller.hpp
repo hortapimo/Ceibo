@@ -8,25 +8,30 @@
 #include <iostream>
 
 #include "model.hpp"
-#include "view.hpp"
+#include "ViewManager.hpp"
 
 
 class Controller {
 public:
-    Controller(Model& model, View& view, sf::Event& event);
+    Controller(Model& model, ViewManager& viewManager);
     
     void init();
-    void processEvent();
+    void processEvent(const sf::Event& event);
     void run();
     void test();
+    void renderMousePosition();
+    void manageCamaraMovement(const sf::Event& event);
     
     static inline float savedXPos = 0.0;
     static inline float savedYPos = 0.0;
 
 private:
     Model& model;
-    View& view;
-    sf::Event& event;
+    ViewManager& viewManager;
+    //sf::Event& _event;
+    bool isDragging;
+    sf::Vector2f dragStart;
+    bool functionExecuted = false;
 };
 
 

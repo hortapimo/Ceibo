@@ -1,17 +1,22 @@
 #include "Model.hpp"
-#include "View.hpp"
+#include "ViewManager.hpp"
 #include "Controller.hpp"
+
 
 int main() {
 
-//window and event creation
-    sf::RenderWindow window(sf::VideoMode(1500,1000), "Ceibo");
+    //window and event creation
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "Anti-Aliasing Example", sf::Style::Default, settings);
+    window.setFramerateLimit(60);
     sf::Event event;
 
 //Model-View-Controler architecture
     Model model;
-    View view(window);
-    Controller controller(model, view, event);
+    ViewManager viewManager(window);
+    Controller controller(model, viewManager);
 
 //init things
     controller.init();
@@ -25,11 +30,9 @@ int main() {
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            
             controller.test();
+            controller.processEvent(event);
         }
-
-        //controller.processEvent();
         
     }
 

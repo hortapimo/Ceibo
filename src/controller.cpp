@@ -7,39 +7,64 @@
 
 using vec_prtNodos = std::vector<std::unique_ptr<Node>>;
 
-Controller::Controller(Model& model, View& view, sf::Event& event) : model(model), view(view), event(event) {}
+Controller::Controller(Model& model, ViewManager& viewManager) : model(model), viewManager(viewManager) {}
 
 void Controller::init(){
-    view.init();
+    viewManager.init();
 }
 
-void Controller::processEvent(){
 
-    view.render();
+void Controller::manageCamaraMovement(const sf::Event& event){
+
+    if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+            this->isDragging = true;
+            this->dragStart = viewManager.window.mapPixelToCoords(sf::Mouse::getPosition(viewManager.window));
+        } else if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+            this->isDragging = false;
+        } else if (event.type == sf::Event::MouseMoved && isDragging){
+            sf::Vector2f dragEnd = viewManager.window.mapPixelToCoords(sf::Mouse::getPosition(viewManager.window));
+            sf::Vector2f offset = dragStart - dragEnd;
+            viewManager.movePortV(offset.x, offset.y);
+            this->dragStart = viewManager.window.mapPixelToCoords(sf::Mouse::getPosition(viewManager.window)); // update dragStart for continuous dragging
+        } else if (event.type == sf::Event::MouseWheelScrolled) {
+            if (event.mouseWheelScroll.delta > 0)
+            { 
+            viewManager.zoomPortV(0.9f); // zoom in 
+            } else {
+            viewManager.zoomPortV(1.1f);
+            // zoom out 
+            }
+        }
+
+
+}
+
+void Controller::processEvent(const sf::Event& event){
+    
+    if(event.type == sf::Event::MouseMoved){
+        this->renderMousePosition();
+    }
+
+    this->manageCamaraMovement(event);
+    
+    viewManager.renderQueue();
+}
+
+void Controller::renderMousePosition(){
+    
+    viewManager.updateMousePosition();
 }
 
 void Controller::test(){
 
-    static bool functionExecuted = false;
-    //view.crearCirculo(10.0f);
-    
-    view.render();
-
     if(!functionExecuted){
-        // test getNodesOfFOlder
         
-        //std::string pathFolder = "C:\\Users\\Hortapimo\\Desktop\\test";
-        std::string pathFolder = "E:\\docs\\OneDrive\\balseiro";
+        std::string pathFolder = "C:\\Users\\Hortapimo\\Desktop\\test";
+        //std::string pathFolder = "E:\\docs\\OneDrive\\balseiro";
         Graph aux = model.getGraph(pathFolder);
-        //model.printNodes(nodos);
-        view.loadGraph(aux);
-        //view.render();
-        
-        // view.init();
-        // model.printNodes(nodos);
-        // sf::Vector2u size = view.window.getSize();
-        // view.drawNode(size.x/2, size.y/2);
-         functionExecuted = true;
+        viewManager.loadGraph(aux);
+
+        functionExecuted = true;
     } 
 }
 
