@@ -7,13 +7,13 @@
 
 #include <iostream>
 
-#include "model.hpp"
+#include "GraphConstructor.hpp"
 #include "ViewManager.hpp"
 
 
 class Controller {
 public:
-    Controller(Model& model, ViewManager& viewManager);
+    Controller(ViewManager& viewManager);
     
     void init();
     void processEvent(const sf::Event& event);
@@ -26,7 +26,6 @@ public:
     static inline float savedYPos = 0.0;
 
 private:
-    Model& model;
     ViewManager& viewManager;
     //sf::Event& _event;
     bool isDragging;

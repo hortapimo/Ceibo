@@ -6,7 +6,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${DirectorioOutPut}") #path donde va a estar
 
 set(CMAKE_WINDOWS_VERSION 10.0)  
 
-
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 include(FetchContent)
 FetchContent_Declare(SFML
@@ -15,7 +14,9 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 add_definitions(-DSFML_STATIC)
 
-file(GLOB_RECURSE SOURCES "src/*.cpp" "src/utilitis/*.cpp")
+include_directories(includes)
+
+file(GLOB_RECURSE SOURCES "src/*.cpp" "src/ViewManager/*.cpp" "src/GraphConstructor/*.cpp")
 
 add_executable(Ceibo ${SOURCES}) #Crea el ejecutable del programa
 

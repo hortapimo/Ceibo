@@ -7,7 +7,7 @@
 
 using vec_prtNodos = std::vector<std::unique_ptr<Node>>;
 
-Controller::Controller(Model& model, ViewManager& viewManager) : model(model), viewManager(viewManager) {}
+Controller::Controller( ViewManager& viewManager) : viewManager(viewManager) {}
 
 void Controller::init(){
     viewManager.init();
@@ -61,7 +61,7 @@ void Controller::test(){
         
         std::string pathFolder = "C:\\Users\\Hortapimo\\Desktop\\test";
         //std::string pathFolder = "E:\\docs\\OneDrive\\balseiro";
-        Graph aux = model.getGraph(pathFolder);
+        Graph aux = graphConstructor::getGraph(pathFolder);
         viewManager.loadGraph(aux);
 
         functionExecuted = true;

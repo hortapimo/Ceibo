@@ -1,22 +1,19 @@
-#include "Model.hpp"
 #include "ViewManager.hpp"
 #include "Controller.hpp"
 
 
 int main() {
 
-    //window and event creation
+//window and event creation
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-
     sf::RenderWindow window(sf::VideoMode(1600, 900), "Anti-Aliasing Example", sf::Style::Default, settings);
     window.setFramerateLimit(60);
     sf::Event event;
 
-//Model-View-Controler architecture
-    Model model;
+//View-Controler architecture
     ViewManager viewManager(window);
-    Controller controller(model, viewManager);
+    Controller controller(viewManager);
 
 //init things
     controller.init();
